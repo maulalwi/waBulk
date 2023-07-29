@@ -1,7 +1,7 @@
 // Bismillah...
 // waBulk By MMMAlwi
 // Created : 2023-07-29 04:23
-// Updated : 2023-07-30 01:05
+// Updated : 2023-07-30 01:37
 
 import baileys from '@whiskeysockets/baileys'
 const makeWASocket = baileys.default
@@ -146,7 +146,10 @@ async function startSock() {
 			return await bulk(new WA(sock))
 		}
 
-		setInterval(await funcBulk, load.config.autoDelay)
+		setInterval(
+			await funcBulk,
+			load.config.autoDelay ? load.config.autoDelay : 24000
+		)
 
 		return sock
 
