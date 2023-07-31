@@ -1,10 +1,11 @@
 // Bismillah...
 // waBulk By MMMAlwi
 // Created : 2023-07-29 04:26
-// Updated : 2023-07-30 00:03
+// Updated : 2023-08-01 05:17
 
 export default async (WA, app) => {
 	try {
+		WA.readChat()
 		// WA.debug.log(WA.senderID)
 		// console.log(await WA.uri());
 
@@ -12,7 +13,6 @@ export default async (WA, app) => {
 			WA.messageText.match(/^rs$/i) &&
 			WA.senderID == WA.config.superAdmin
 		) {
-			WA.readChat()
 			var log = `_#${app} Restart..._\n${WA.date.now()}`
 			await WA.replyText(log)
 			WA.debug.log(log)
@@ -21,14 +21,12 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^uri$/i)) {
-			WA.readChat()
 			return await WA.replyText(
 				`uri : ${await WA.uri()}\n${WA.date.dateTime()}`
 			)
 		}
 
 		if (WA.messageText.match(/^cekchat$/i)) {
-			WA.readChat()
 			let chat = await WA.SETTING.findOne({ key: 'chat' })
 			if (chat) {
 				return await WA.replyText(
@@ -44,7 +42,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^cekwa$/i)) {
-			WA.readChat()
 			let cekWa = await WA.BULK.find({})
 			if (cekWa && cekWa.length != 0) {
 				let text = `*List WA*\n\nTotal : ${cekWa.length}\n\n`
@@ -60,7 +57,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^cekstatus$/i)) {
-			WA.readChat()
 			let status = await WA.SETTING.findOne({ key: 'status' })
 			if (status) {
 				return await WA.replyText(`*Status : ${status.value}*`)
@@ -74,7 +70,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^start$/i)) {
-			WA.readChat()
 			let status = await WA.SETTING.findOne({ key: 'status' })
 			status.value = 'start'
 			await status.save()
@@ -82,7 +77,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^stop$/i)) {
-			WA.readChat()
 			let status = await WA.SETTING.findOne({ key: 'status' })
 			status.value = 'stop'
 			await status.save()
@@ -90,7 +84,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^reset$/i)) {
-			WA.readChat()
 			let reset = await WA.BULK.updateMany({}, { done: 'false' })
 			if (reset) {
 				return await WA.replyText(`_Berhasil reset status wa_`)
@@ -98,9 +91,8 @@ export default async (WA, app) => {
 				return await WA.replyText(`_Gagal reset status wa_`)
 			}
 		}
-		
+
 		if (WA.messageText.match(/^chat/i)) {
-			WA.readChat()
 			let chat = WA.messageText.replace(/chat\n/i, '')
 			if (!chat || chat == '') {
 				return await WA.replyText('_Format input chat salah_')
@@ -120,7 +112,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^wa/i)) {
-			WA.readChat()
 			let wa = WA.messageText
 			wa = wa.split('\n')
 			wa.shift()
@@ -157,7 +148,6 @@ export default async (WA, app) => {
 		}
 
 		if (WA.messageText.match(/^delwa/i)) {
-			WA.readChat()
 			let wa = WA.messageText
 			wa = wa.split('\n')
 			wa.shift()
