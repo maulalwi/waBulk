@@ -106,10 +106,10 @@ async function startSock() {
 						await sock.sendMessage(load.config.superAdmin, {
 							text: `_#${app} Running!_\n${load.date.dateTime()}`,
 						})
-						await sock.sendPresenceUpdate(
-							'available',
-							load.config.superAdmin
-						)
+						// await sock.sendPresenceUpdate(
+						// 	'available',
+						// 	load.config.superAdmin
+						// )
 					} else if (connection === 'close') {
 						// reconnect if not logged out
 						if (
