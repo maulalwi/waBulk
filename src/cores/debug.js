@@ -1,12 +1,12 @@
 // Bismillah...
 // waBulk By MMMAlwi
 // Created : 2023-07-29 03:24
-// Updated : 2023-07-30 00:20
+// Updated : 2023-08-06 11:45
 
 import date from './date.js'
 import config from './../../config.js'
 import chalk from 'chalk'
-import tiny from 'tiny-json-http'
+// import tiny from 'tiny-json-http'
 
 function log(data){
 	if(!config.modeTest){
