@@ -1,7 +1,7 @@
 // Bismillah...
 // waBulk By MMMAlwi
 // Created : 2023-07-29 04:26
-// Updated : 2023-08-01 05:17
+// Updated : 2023-08-09 10:32
 
 export default async (WA, app) => {
 	try {
@@ -121,8 +121,8 @@ export default async (WA, app) => {
 				let i = 1
 				let d = 0
 				for (let key of wa) {
-					key = WA.toWA(key)
-					let cek = key.length >= 8 ? key : 'false'
+					key = key.replace(/\D/g, '')
+					let cek = key.length >= 5 ? key : 'false'
 					cek = /^\d+$/.test(cek) ? 'true' : 'false'
 					if (cek == 'true') {
 						let cekDb = await WA.BULK.findOne({ wa: key })
