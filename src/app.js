@@ -52,6 +52,7 @@ async function startSock() {
 		debug.log(`WA     : isLates ${isLatest}`)
 
 		const sock = makeWASocket({
+			defaultQueryTimeoutMs: undefined,
 			version,
 			logger,
 			printQRInTerminal: true,
